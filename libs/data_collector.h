@@ -16,10 +16,12 @@ float adc_voltage_on_channel(int channel){
 }
 
 float calibrate_temp(float voltage){
-	return voltage * 30.14 - 16.6;
+	return voltage * 30.14 - 16.6; //original
+	return voltage * 30.14 * 715.0 / 820.0 - 16.6; //after swapping to 710 ohm calibrating resistor
 }
 
 float calibrate_cell_voltage(float adc_voltage){
+	//return (adc_voltage * 2) - 1;
 	return (adc_voltage * 2) - 1;
 }
 

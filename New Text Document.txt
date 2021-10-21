@@ -1,0 +1,31 @@
+Programming CellMen
+Materials:
+STLinkV2 (Dedicated STM programmer)
+A way to connect the CellMan board to the Programmer
+A computer with USB (Linux is easier, but a windows machine with cygwin is possible)
+The following software:
+Small Device C Compiler -- http://sdcc.sourceforge.net/
+Stm8flash -- https://github.com/vdudouyt/stm8flash
+(In my case, it was necessary to compile these from source)
+1. Connect the Power, GND, Reset, and SWIM pins on the J1 connector of CellMan to their
+corresponding pins on the Programmer, and the Programmer to the USB port of your
+computer.
+a. As of right now, no dedicated cable exists for this purpose. It was my intention to
+make one, but I find myself unable to at the time of writing this. A set of female
+to female jumper wires can be used instead.
+b. On later iterations of CellMan, the pins on the J1 connector are not populated. A
+good connection can be made temporarily by pressing a set of male pins against
+the holes and plugging the jumper wires or cable into these pins
+c. If CellMan is receiving external power, the Power pin can and should be omitted.
+BATTERY PACK MAINTENANCE MANUAL 39
+2. Clone the CellMan firmware source code from Git and make any desired changes
+a. https://github.com/Lafayette-FSAE/CellManFirmware
+3. Once you are confident that SDCC and STM8flash have been installed correctly and are
+in your path, navigate to the CellManfirmware folder in your terminal and run the
+following commands.
+# make sure both tools are installed correctly
+$ stm8flash
+$ sdcc
+# compile and flash the code
+$ make
+$ make flash
